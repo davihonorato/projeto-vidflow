@@ -1,0 +1,9 @@
+{
+  "name": "projeto-vidflow",
+  "version": "1.0.0",
+  "description": "Projeto Vidflow - Consumindo API com JavaScript (Alura)",
+  "main": "index.js",
+  "repository": "https://github.com/davihonorato/projeto-vidflow",
+  "author": "Davi Honorato <davihonoratoctt@gmail.com>",
+  "license": "MIT"
+}
