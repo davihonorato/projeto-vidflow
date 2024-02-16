@@ -21,6 +21,7 @@ async function displayVideos() {
                     <img class="img-canal" src = "${video.imagem}" alt="Logo do Canal">
                     <h3 class="titulo-video">${video.titulo}</h3>
                     <p class="titulo-canal">${video.descricao}</p>
+                    <p class="categoria" hidden>${video.categoria}</p>
                 </div>
             </li>
             `;
@@ -57,6 +58,32 @@ function searchFilter(){
         }
     } else {
         for(let video of videos) {
+            video.style.display = '';
+        }
+    }
+}
+
+
+/*
+* Filtro de categoria
+*/
+const botaoCategoria = document.querySelectorAll('.superior__item');
+
+botaoCategoria.forEach((botao) => {
+    let categoria = botao.getAttribute('name');
+    botao.addEventListener('click', () => filterCategory(categoria));
+});
+
+function filterCategory(filter) {
+    const videos = document.querySelectorAll(".videos__item");
+    const valorFiltro = filter.toLowerCase();
+    
+    for(let video of videos) {
+        let videoCategoria = video.querySelector('.categoria').textContent.toLowerCase();
+        
+        if (!videoCategoria.includes(valorFiltro) && valorFiltro != 'tudo') {
+            video.style.display = 'none';
+        } else {
             video.style.display = '';
         }
     }
