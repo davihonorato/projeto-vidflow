@@ -1,3 +1,6 @@
+/*
+* Mostrar vídeos
+*/
 const containerVideos = document.querySelector('.videos__container');
 
 async function displayVideos() {
@@ -26,5 +29,35 @@ async function displayVideos() {
         containerVideos.innerHTML = `<p>Houve um erro ao carregar os vídeos: ${error}</p>`
     }
 }
-
 displayVideos();
+
+
+/*
+* Barra de pesquisa
+*/
+const searchBar = document.querySelector(".pesquisar__input");
+
+if (searchBar) {
+    searchBar.addEventListener("input", searchFilter);
+}
+
+function searchFilter(){
+    const videos = document.querySelectorAll(".videos__item");
+
+    if (searchBar.value != ""){
+        for(let video of videos){
+            let titulo = video.querySelector(".titulo-video").textContent.toLowerCase();
+            let valorFiltro = searchBar.value.trim().toLowerCase();
+
+            if(!titulo.includes(valorFiltro)){
+                video.style.display = 'none';
+            } else {
+                video.style.display = '';
+            }
+        }
+    } else {
+        for(let video of videos) {
+            video.style.display = '';
+        }
+    }
+}
